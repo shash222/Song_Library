@@ -2,10 +2,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="Controller.SongLib">
+<?import javafx.scene.text.Text?>
+<VBox prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Controller.SongLib" fx:id="container">
+    <ListView fx:id="songList" onMouseClicked="#onSongSelection" onKeyPressed="#onSongSelection"></ListView>
+    <Label text="Song Name:"/>
+    <TextField fx:id="song" editable="false" prefWidth="${container.width}"/>
+    <Label text="Artist:"/>
+    <TextField fx:id="artist" editable="false" prefWidth="${container.width}"/>
+    <CheckBox fx:id="showDetails" text="Show Song Details" onAction="#showSongDetails"/>
+    <Label fx:id="albumLabel" text="Album:"/>
+    <TextField fx:id="album" editable="false" prefWidth="${container.width}"/>
+    <Label fx:id="yearLabel" text="Year Released:"/>
+    <TextField fx:id="year" editable="false" prefWidth="${container.width}"/>
 
-    <Label text="I love bacon"/>
-    <Button text="Submit"/>
-
+    <!--  Temporary, in order to call set values with test data -->
+    <Button onAction="#testSetup"/>
 </VBox>
