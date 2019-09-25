@@ -5,17 +5,28 @@
 <?import javafx.scene.text.Text?>
 <VBox prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
       fx:controller="Controller.SongLib" fx:id="container">
-    <ListView fx:id="songList" onMouseClicked="#onSongSelection" onKeyPressed="#onSongSelection"></ListView>
+    <ListView fx:id="songList" onMouseClicked="#onSongSelection"></ListView>
     <Label text="Song Name:"/>
     <TextField fx:id="song" editable="false" prefWidth="${container.width}"/>
     <Label text="Artist:"/>
     <TextField fx:id="artist" editable="false" prefWidth="${container.width}"/>
-    <CheckBox fx:id="showDetails" text="Show Song Details" onAction="#showSongDetails"/>
+    <CheckBox fx:id="showDetails" text="Show Song Details" onAction="#showSongDetailFields"/>
     <Label fx:id="albumLabel" text="Album:"/>
     <TextField fx:id="album" editable="false" prefWidth="${container.width}"/>
     <Label fx:id="yearLabel" text="Year Released:"/>
     <TextField fx:id="year" editable="false" prefWidth="${container.width}"/>
 
-    <!--  Temporary, in order to call set values with test data -->
-    <Button onAction="#testSetup"/>
+    <Button text="Add Song" onAction="#addSong"/>
+    <Button text="Remove Selected Song" onAction="#removeSong"/>
+    <Button text="Edit Selected Song" onAction="#editSong"/>
+    <Label fx:id="newSongNameLabel" text="Song Name (Required)"/>
+    <TextField fx:id="newSongName" prefWidth="${container.width}"/>
+    <Label fx:id="newSongArtistLabel" text="Artist (Required)"/>
+    <TextField fx:id="newSongArtist"  prefWidth="${container.width}"/>
+    <Label fx:id="newSongAlbumLabel" text="Album"/>
+    <TextField fx:id="newSongAlbum"  prefWidth="${container.width}"/>
+    <Label fx:id="newSongYearLabel" text="Year Released"/>
+    <TextField fx:id="newSongYear"  prefWidth="${container.width}"/>
+    <Button fx:id="editListButton" text="Save" onAction="#saveChanges"/>
+
 </VBox>

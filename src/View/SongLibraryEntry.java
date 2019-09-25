@@ -15,9 +15,8 @@ public class SongLibraryEntry extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setTitle("Song Library");
+        primaryStage.setScene(new Scene(root, 500, 675));
         primaryStage.show();
-
     }
 }
