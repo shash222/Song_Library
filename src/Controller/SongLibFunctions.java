@@ -1,3 +1,11 @@
+/*
+ *  Mohammed Alnadi (ma1322)
+ *  Salman Hashmi (sah285)
+ *  
+ *  Note: We are using the GSON library in this project. GSON version 2.8.5
+ *  Download link: https://mvnrepository.com/artifact/com.google.code.gson/gson/2.8.5 
+ */
+
 package Controller;
 
 import Model.Song;
