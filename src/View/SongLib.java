@@ -6,10 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class SongLibraryEntry extends Application {
+public class SongLib extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        
     }
 
     @Override

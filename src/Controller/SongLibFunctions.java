@@ -6,6 +6,8 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -26,13 +28,10 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonArray;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 
-public class SongLib implements Initializable {
+
+public class SongLibFunctions implements Initializable {
     @FXML
     private TextField song;
     @FXML
@@ -97,6 +96,7 @@ public class SongLib implements Initializable {
         displayEditFields(false, false);
         Gson gson = new Gson();
         StringBuilder persistedSongs = new StringBuilder();
+        showDetails.setSelected(true); 
         try {
             Scanner sc = new Scanner(new File(SONG_LIST_FILE_PATH));
             while (sc.hasNext()) {
@@ -119,6 +119,12 @@ public class SongLib implements Initializable {
 
         } catch(FileNotFoundException e){
                 System.out.println("File not found");
+        }
+        if(songList.getItems().size() > 0) {
+        	songList.getSelectionModel().select(0);
+        	 try {
+                 showSongDetails();
+             } catch(Exception e) { }
         }
     }
 
@@ -239,7 +245,11 @@ public class SongLib implements Initializable {
      * @param message
      */
     private void displayPopup(String message) {
-        System.out.println(message);
+    	Alert alert = new Alert(AlertType.ERROR);
+    	alert.setTitle("Error");
+    	alert.setHeaderText("Hmm, we have an error.");
+    	alert.setContentText(message);
+    	alert.showAndWait();
     }
 
     /**
@@ -249,7 +259,7 @@ public class SongLib implements Initializable {
     @FXML
     private void editSong(ActionEvent event) {
         if (songList.getSelectionModel().getSelectedItem() == null) {
-            displayPopup("Nothing selected");
+            displayPopup("No song is selected to be edited");
             // TODO display popup saying nothing was selected
             return;
         }
@@ -335,7 +345,7 @@ public class SongLib implements Initializable {
                         newSongYearValue = Integer.parseInt(newSongYearAsString);
                     }
                 } catch (NumberFormatException e) {
-                    displayPopup("Invalid year entered");
+                    displayPopup("Invalid year entered. Song will be added, however.");
                     // TODO add  popup  saying invalid year entered, will replace with 0, can edit song with year in proper format if desired
                 }
 
@@ -384,8 +394,7 @@ public class SongLib implements Initializable {
     @FXML
     private void removeSong(ActionEvent event) {
         if (songList.getSelectionModel().getSelectedItem() == null) {
-            displayPopup("Nothing selected");
-            // TODO display popup saying nothing was selected
+            displayPopup("No song is selected to be removed");
             return;
         }
         String songIdentifier = getSelectedSongIdentifier();

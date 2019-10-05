@@ -4,7 +4,7 @@
 
 <?import javafx.scene.text.Text?>
 <VBox prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="Controller.SongLib" fx:id="container">
+      fx:controller="Controller.SongLibFunctions" fx:id="container">
     <ListView fx:id="songList" onMouseClicked="#onSongSelection"></ListView>
     <Label text="Song Name:"/>
     <TextField fx:id="song" editable="false" prefWidth="${container.width}"/>
